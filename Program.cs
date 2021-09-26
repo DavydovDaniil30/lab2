@@ -1,42 +1,50 @@
 ﻿using System;
 
-namespace ConsoleApp3
+namespace ConsoleApp4
 {
-    class Address
+    class Rectangle
     {
-        public string Country { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string House { get; set; }
-        public string Apartment { get; set; }
-        public string Index { get; set; }
+        private double side1, side2;
 
+        public Rectangle(double side1, double side2)
+        {
+            this.side1 = side1;
+            this.side2 = side2;
+        }
+        public Rectangle() { }
+
+        double AreaCalculator()
+        {
+            return side1 * side2;
+        }
+
+        double PerimeterCalculator()
+        {
+            return (side1 + side2) * 2;
+        }
+
+        public double Area { get { return this.AreaCalculator(); } }
+        public double Perimeter { get { return this.PerimeterCalculator(); } }
     }
+
     class Program
     {
         static void Main()
         {
-            
-            Address address = new Address();
+            Console.Write("Введите длинну прямоугольника - ");
+            string x = Console.ReadLine();
+            double side1 = Int32.Parse(x);
 
-            
-            address.Country = "Ukraine";
-            address.City = "Kiev";
-            address.Street = "Lobachevskogo Street";
-            address.House = "23";
-            address.Apartment = "601";
-            address.Index = "11111";
+            Console.Write("Введите ширину прямоугольника - ");
+            string y = Console.ReadLine();
+            double side2 = Int32.Parse(y);
 
-            
-            Console.WriteLine(address.Country);
-            Console.WriteLine(address.City);
-            Console.WriteLine(address.Street);
-            Console.WriteLine(address.House);
-            Console.WriteLine(address.Apartment);
-            Console.WriteLine(address.Index);
+            Rectangle rectangle = new Rectangle(side1, side2);
 
-            
-            Console.ReadKey();
+            Console.WriteLine("Площадь = {0}", rectangle.Area);
+            Console.WriteLine("Периметр = {0}", rectangle.Perimeter);
+
         }
     }
 }
+0
